@@ -5,13 +5,7 @@ import React from 'react'
 
 const Header = ({ }) => {
   const {theme , setTheme} = useTheme()
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme("dark");
-    } else if (theme === 'dark') {
-      setTheme("light");
-    }
-  }
+  
   return (
     <>
       {/* <div className="[bg-black bg-white"></div> */}
@@ -20,7 +14,7 @@ const Header = ({ }) => {
           <Link href={'/'}><a className='text-orange-800 font-bold uppercase'><h4 className='text-3xl'>Topmojo</h4></a></Link>
         </div>
         <div className='pr-3'>
-          <button className={`px-4 py-2 text-sm ${theme === 'light' ? 'bg-black' : 'bg-white'} bg-black text-white dark:bg-white dark:text-black rounded shadow`} onClick={() => { toggleTheme() }}>{theme === 'light' ? 'Dark' : 'Light'} mode</button>
+          <button className={`px-4 py-2 text-sm ${theme === 'light' ? 'bg-black' : 'bg-white'} bg-black text-white dark:bg-white dark:text-black rounded shadow`} onClick={() => { setTheme(theme === 'light' ? 'dark': 'light') }}>{theme === 'light' ? 'Dark' : 'Light'} mode</button>
         </div>
       </header>
     </>
