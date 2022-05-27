@@ -1,7 +1,6 @@
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import React from 'react'
-// import { StyledHeader } from './styles/Header.styled'
 
 const Header = ({ }) => {
   const { theme, setTheme } = useTheme()
