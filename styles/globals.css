@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: all .5s ease-in;
+}
+
+/* .bg-header {
+    background-color: #eb3b3b;
+} */
+
+html {
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+    width: .5rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgb(206, 46, 46);
+  border-radius: .5rem;
+}
+
+/* body {
+    background-color: #b27b7b;
+} */
+
+/* .body-black {
+    background-color: #b27b7b;
+} */
+
+a {
+  color: #eb3b3b;
+}
