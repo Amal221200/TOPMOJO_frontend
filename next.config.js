@@ -12,7 +12,7 @@ const nextConfig = {
   images: {
     path: '/_next/image',
     loader: 'default',
-    domains: [process.env.IMAGE_DOMAIN, "res.cloudinary.com"]
+    domains: [process.env.IMAGE_DOMAIN]
   }
 }
 
