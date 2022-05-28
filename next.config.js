@@ -10,7 +10,7 @@ const nextConfig = {
     IMAGE_DOMAIN: process.env.IMAGE_DOMAIN
   },
   images: {
-    path: '/_next/image',
+    // path: '/_next/image',
     loader: 'default',
     domains: [process.env.IMAGE_DOMAIN]
   }
