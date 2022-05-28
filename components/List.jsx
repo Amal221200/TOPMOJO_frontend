@@ -48,7 +48,7 @@ const List = ({ listdata, host_name }) => {
                 <div className="flex justify-center my-12" style={{}}>
                     <div className='w-[65rem]'>
                         <Image src={image_url} alt="" width={1920} height={1080} layout="responsive" priority={true} />
-                        <img src={image_url} className="w-full" alt="" />
+                        {/* <img src={image_url} className="w-full" alt="" /> */}
                     </div>
                 </div>
             </div>
