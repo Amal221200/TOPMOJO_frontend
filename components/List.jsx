@@ -36,7 +36,7 @@ const List = ({ listdata, host_name }) => {
         <>
             <div className="my-12 md:min-h-[35rem] min-h-[15rem] lg:min-h-[45rem]">
                 <div className="">
-                    <h2 className={`md:text-xl text-lg bg-[#eee] text-black dark:bg-stone-800 dark:text-white bg-opacity-70 px-2 cursor-pointer inline-block`} onClick={() => onToggle(toggle)}>{rank}. {title} {process.env.NODE_ENV} <span className='text-[#eb3b3b]'>{!toggle && 'Click for Description'}</span></h2>
+                    <h2 className={`md:text-xl text-lg bg-[#eee] text-black dark:bg-stone-800 dark:text-white bg-opacity-70 px-2 cursor-pointer inline-block`} onClick={() => onToggle(toggle)}>{rank}. {title} <span className='text-[#eb3b3b]'>{!toggle && 'Click for Description'}</span></h2>
                     {/* <p style={{ clipPath: toggle ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : 'polygon(0 0, 100% 0, 100% 0, 0 0)', }}>
                     {description === "" ? "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore iste eligendi adipisci obcaecati id accusamus quis hic nulla. Praesentium, eligendi laborum? Dignissimos in doloribus at nobis nisi velit excepturi voluptate! Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta voluptatibus modi recusandae, quae officia officiis voluptatum ut repudiandae, enim corporis ex ipsum magni tempore ea esse aperiam deserunt quam cupiditate. Suscipit repudiandae ducimus vitae mollitia ea non vero, explicabo accusantium." : description}
                 </p> */}
