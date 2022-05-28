@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Image from 'next/image'
 
 
 const List = ({ listdata, host_name }) => {
@@ -7,7 +8,8 @@ const List = ({ listdata, host_name }) => {
 
     const { rank, title, description, image } = listdata.attributes
 
-    const image_url = `${host_name}${image.data.attributes.formats.large.url}`
+    const image_url = `${host_name}${image.data.attributes.formats.large.url}`;
+    const imagel = image 
 
     const onToggle = (toggle) => {
         if (toggle) {
@@ -25,7 +27,7 @@ const List = ({ listdata, host_name }) => {
     // }
     return (
         <>
-            <div className="my-12 md:min-h-[35rem] min-h-[25rem] lg:min-h-[45rem]">
+            <div className="my-12 md:min-h-[35rem] min-h-[15rem] lg:min-h-[45rem]">
                 <div className="">
                     <h2 className={`text-[1.5rem] bg[#eee] text-black dark:bg-stone-800 dark:text-white bg-opacity-70 px-2 cursor-pointer inline-block`} onClick={() => onToggle(toggle)}>{rank}. {title} <span className='text-[#eb3b3b]'>{!toggle && 'Click for Description'}</span></h2>
                     {/* <p style={{ clipPath: toggle ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" : 'polygon(0 0, 100% 0, 100% 0, 0 0)', }}>
@@ -38,7 +40,8 @@ const List = ({ listdata, host_name }) => {
                 </div>
                 <div className="flex justify-center my-12" style={{  }}>
                      <div className='w-[65rem]'>
-                         <img src={image_url} alt="" className='w-full' />
+                         {/* <img src={image_url} alt="" className='w-full' /> */}
+                         <Image src={image_url} alt="" width={1920} height={1080} layout="responsive" />
                      </div>
                  </div>
             </div>
