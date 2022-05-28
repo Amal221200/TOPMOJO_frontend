@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import BlogList from '../components/BlogList'
 
 export default function Home({ blogs, web_desc, message }) {
@@ -23,6 +24,7 @@ export default function Home({ blogs, web_desc, message }) {
         </>
       ) : <h1>message</h1>
       }
+      <Image src={"https://res.cloudinary.com/dwimzsevp/image/upload/v1653729522/large_AOT_40e363620e.jpg"} alt="" width={1920} height={1080} layout="responsive" priority={true} />
     </section>
   )
 }
