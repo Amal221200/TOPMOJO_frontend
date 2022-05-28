@@ -51,7 +51,8 @@ const List = ({ listdata, host_name }) => {
                         {/* { image.data === !null && (<Image src={`${host_name}${image.data.attributes.formats.large.url}`} alt="" width={1920} height={1080} layout="responsive" />) } */}
 
                         {/* {checkImage() && process.env.NODE_ENV === 'development' ? <Image src={image_url} alt="" width={1920} height={1080} layout="responsive" /> ? checkImage() && process.env.NODE_ENV === 'production' : (<Image src={image.data.attributes.formats.large.url} alt="" width={1920} height={1080} layout="responsive" />): <h1>NO IMAGE</h1>} */}
-                        <Image src={image_url} alt="" width={1920} height={1080} layout="responsive" priority={true} />
+                        {/* <Image src={image_url} alt="" width={1920} height={1080} layout="responsive" priority={true} /> */}
+                        <img src={image_url} className="w-full" alt="" />
                     </div>
                 </div>
             </div>
