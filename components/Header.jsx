@@ -12,7 +12,7 @@ const Header = ({ }) => {
           <Link href={'/'}><a className='text-orange-800 font-bold uppercase'><h4 className='md:text-3xl text-2xl'>Topmojo</h4></a></Link>
         </div>
         <div className='pr-3'>
-          <button className={`md:px-4 md:py-2 p-2 md:text-xl text-xs bg-black text-white dark:bg-white dark:text-black rounded shadow`} onClick={() => { setTheme(theme === 'light' ? 'dark' : 'light') }}>{theme === 'light' ? 'Dark' : 'Light'} mode</button>
+          <button className={`md:px-3 md:py-1 p-2 md:text-lg text-xs bg-black text-white dark:bg-white dark:text-black rounded shadow`} onClick={() => { setTheme(theme === 'light' ? 'dark' : 'light') }}>{theme === 'light' ? 'Dark' : 'Light'} mode</button>
         </div>
       </header>
     </>
