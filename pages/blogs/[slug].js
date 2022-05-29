@@ -21,12 +21,12 @@ export default Blogs
 export const getServerSideProps = async (context) => {
     const { slug } = context.query
     try {
-        const response = await (await fetch(`${process.env.API_URL}/api/top-10s?populate=*&filters[slug][title][$eq]=${slug}&sort=rank:DESC`, {
+        const response = await (await fetch(`${process.env.API_URL}/api/top-10s?populate=*&filters[slug][slug][$eq]=${slug}&sort=rank:DESC`, {
             headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
             }
         })).json()
-        const response2 = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?filters[slug][title][$eq]=${slug}`, {
+        const response2 = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?filters[slug][slug][$eq]=${slug}`, {
             headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
             }

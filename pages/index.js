@@ -17,7 +17,7 @@ export default function Home({ blogs, web_desc, message }) {
             <div className="flex flex-wrap -m-4 justify-center mx-auto lg:justify-start">
               {blogs.map(blog => (
                 // 
-                <BlogList key={blog.id} blog_slug={blog.attributes.slug.data.attributes.title} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />
+                <BlogList key={blog.id} blog_slug={blog.attributes.slug.data.attributes.slug} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />
               ))}
             </div>
           </div>
