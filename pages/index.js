@@ -16,7 +16,7 @@ export default function Home({ blogs, web_desc, message }) {
             <div className="flex flex-wrap -m-4 justify-center mx-auto lg:justify-start">
               {blogs.map(blog => (
                 // 
-                <BlogList key={blog.id} blog_slug={blog.attributes.slug.data.attributes.slug} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />
+                <BlogList key={blog.id} blog_date={new Date(blog.attributes.updatedAt).toLocaleDateString()} blog_slug={blog.attributes.slug.data.attributes.slug} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />
               ))}
             </div>
           </div>
@@ -29,7 +29,7 @@ export default function Home({ blogs, web_desc, message }) {
 
 export const getServerSideProps = async (context) => {
   try {
-    const response = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=slug`, {
+    const response = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=slug&sort=updatedAt:DESC`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
       }
