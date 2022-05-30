@@ -1,5 +1,3 @@
-const plugin = require("tailwindcss/plugin");
-
 module.exports = {
   darkMode: 'class',
   'main-bg': {
@@ -17,13 +15,5 @@ module.exports = {
       }
     },
   },
-  plugins: [
-    plugin(function ({addComponents, theme}){
-      addComponents({
-        '.main-bg': {
-          position: 'relative',
-        }
-      })
-    })
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

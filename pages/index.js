@@ -12,8 +12,8 @@ export default function Home({ blogs, web_desc, message }) {
             <p className={`leading-7 text-orange-700 dark:text-red-600 text-lg md:text-2xl font-semibold px-5`}>{web_desc.attributes.description}</p>
           </main>
           <div className="container mx-auto px-5 py-24">
-            <h3 className={`text-xl text-black dark:text-white my-4`}>Some Blogs</h3>
-            <div className="flex flex-wrap -m-4 justify-center mx-auto lg:justify-start">
+            <h3 className={`text-xl text-black dark:text-white mb-4`}>Some Blogs</h3>
+            <div className="flex flex-wrap justify-center mx-auto lg:justify-start">
               {blogs.map(blog => (
                 // 
                 <BlogList key={blog.id} blog_date={new Date(blog.attributes.updatedAt).toLocaleDateString()} blog_slug={blog.attributes.slug.data.attributes.slug} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />

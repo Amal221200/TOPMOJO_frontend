@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 const BlogList = ({ blog_slug, blog_description, blog_title, blog_date }) => {
   return (
-    <div className="p-4 lg:w-1/3">
-      <div className={`h-full bg-[#eee] dark:bg-stone-700 lg:px-10 lg:py-12 p-8 rounded-lg overflow-hidden text-center relative`}>
+    <div className="mx-2 lg:w-1/3 rounded-lg shadow-sm dark:shadow-gray-800 shadow-gray-500">
+      <div className={`h-full bg-[#eee] rounded-lg dark:bg-stone-700 lg:px-10 lg:py-12 p-8 overflow-hidden text-center relative`}>
         <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 dark:text-neutral-500 mb-3">{blog_title}</h1>
         <h3 className='my-2 text-gray-900 dark:text-neutral-500'>{blog_date}</h3>
         <p className="leading-relaxed text-left mb-3 dark:text-white">{blog_description.slice(0, 150)}</p>
