@@ -16,8 +16,8 @@ const Blogs = ({ blogs, message }) => {
                         {!message ? (
                             blogs.map(blog => {
                                 return (
-                                    <SwiperSlide>
-                                        <Blog key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
+                                    <SwiperSlide key={blog.id} >
+                                        <Blog blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
                                     </SwiperSlide>
                                 )
                             })

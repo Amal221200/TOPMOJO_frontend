@@ -22,8 +22,8 @@ export default function Home({ blogs, web_desc, message }) {
                 }
               }} freeMode={{ enabled: true, sticky: false }}>
                 {blogs.map(blog => (
-                  <SwiperSlide>
-                    <BlogHome key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
+                  <SwiperSlide key={blog.id} >
+                    <BlogHome blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
                   </SwiperSlide>
                 ))}
               </Swiper>
