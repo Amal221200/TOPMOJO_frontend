@@ -8,7 +8,7 @@ const Blog = ({ blogSlug, blogDate, blogTitle, blogDescription }) => {
       <h3 className='my-2 text-gray-900 dark:text-neutral-500'>{blogDate}</h3>
       <p className="leading-relaxed text-base mb-4 text-black dark:text-white lg:flex lg:items-center lg:min-h-[15rem]">{blogDescription}</p>
       <Link href={`/blogs/${blogSlug}`}>
-        <a className="text-[#eb3b3b] inline-flex items-center">Learn More
+        <a className="text-[#eb3b3b] inline-flex items-center">Read More
           <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
