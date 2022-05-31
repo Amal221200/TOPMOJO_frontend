@@ -11,7 +11,10 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
   const { theme, setTheme } = useTheme()
+  const [ mounted, setMounted ] = useState(false)
 
+  
+  
   useEffect(() => {
     router.events.on('routeChangeStart', () => {
       setProgress(40)
@@ -20,8 +23,10 @@ function MyApp({ Component, pageProps }) {
       setProgress(100)
     })
     setTheme(localStorage.getItem('theme') !== null && localStorage.getItem('theme'))
+    setMounted(true)
   }, [])
-
+  
+  if(!mounted) return null
   return (
     <ThemeProvider attribute='class'>
       <Head>

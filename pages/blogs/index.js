@@ -34,7 +34,7 @@ const Blogs = ({ blogs, message }) => {
 
 export default Blogs
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     try {
 
         const response = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=slug&sort=updatedAt:DESC`, {

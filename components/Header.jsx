@@ -1,10 +1,11 @@
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import React from 'react'
+import { useState, useEffect } from 'react'
 
 const Header = ({ }) => {
   const { theme, setTheme } = useTheme()
-
+  
   return (
     <>
       <header className={`flex bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-70 items-center justify-between w-[100vw] py-3 sticky top-0 left-0 right-0 z-[1000]`}>
