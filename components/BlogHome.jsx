@@ -4,10 +4,10 @@ import Link from 'next/link'
 const BlogHome = ({blogSlug, blogDate, blogTitle, blogDescription }) => {
   return (
     <div className="m-2 rounded-lg shadow-sm dark:shadow-gray-800 shadow-gray-500">
-      <div className={`h-full bg-[#eee] rounded-lg dark:bg-stone-700 lg:px-10 lg:py-12 p-8 overflow-hidden text-center relative`}>
+      <div className={`h-full bg-[#eee] rounded-lg dark:bg-stone-700 lg:px-10 lg:py-12 p-4 md:p-8 overflow-hidden text-center relative`}>
         <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 dark:text-neutral-500 mb-3">{blogTitle}</h1>
         <h3 className='my-2 text-gray-900 dark:text-neutral-500'>{blogDate}</h3>
-        <p className="leading-relaxed text-left mb-3 dark:text-white">{blogDescription.slice(0, 150)}</p>
+        <p className="leading-relaxed text-left mb-3 md:text-base text-sm dark:text-white">{blogDescription.slice(0, 150)}</p>
         <Link href={`/blogs/${blogSlug}`}>
           <a className="text-[#eb3b3b] inline-flex items-center">Read More
             <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">

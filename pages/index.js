@@ -17,7 +17,7 @@ export default function Home({ blogs, web_desc, message }) {
             <h3 className={`text-xl text-black dark:text-white mb-4`}>Some Blogs</h3>
             <div className="flex flex-wrap justify-center mx-auto lg:justify-start">
               <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={2} breakpoints={{
-                768: {
+                1024: {
                   slidesPerView: 3
                 }
               }} freeMode={{ enabled: true, sticky: false }}>
