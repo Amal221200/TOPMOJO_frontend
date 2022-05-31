@@ -1,21 +1,30 @@
-import Link from 'next/link'
 import React from 'react'
 import Blog from '../../components/Blog'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode } from 'swiper'
 
 const Blogs = ({ blogs, message }) => {
     return (
         <section className='min-h-screen'>
-            <div className='container py-4 px-2 mx-auto text-black dark:text-white'>
+            <div className='container py-4 px-2 mx-auto text-black dark:text-white md'>
                 <div className='flex flex-wrap'>
-                    {!message ? (
-                        blogs.map(blog => {
-                            return (
-                                <Blog key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
-                            )
-                        })
-                    ) : (
-                        <h1>{message}</h1>
-                    )}
+                    <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={2} breakpoints={{
+                        768: {
+                            slidesPerView: 3
+                        }
+                    }} freeMode={{enabled: true, sticky: false}}>
+                        {!message ? (
+                            blogs.map(blog => {
+                                return (
+                                    <SwiperSlide>
+                                        <Blog key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
+                                    </SwiperSlide>
+                                )
+                            })
+                        ) : (
+                            <h1>{message}</h1>
+                        )}
+                    </Swiper>
                 </div>
             </div>
         </section>

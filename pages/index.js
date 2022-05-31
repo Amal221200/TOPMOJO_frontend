@@ -1,4 +1,6 @@
 import BlogHome from '../components/BlogHome'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode } from 'swiper'
 
 export default function Home({ blogs, web_desc, message }) {
 
@@ -14,10 +16,17 @@ export default function Home({ blogs, web_desc, message }) {
           <div className="container mx-auto px-5 py-24">
             <h3 className={`text-xl text-black dark:text-white mb-4`}>Some Blogs</h3>
             <div className="flex flex-wrap justify-center mx-auto lg:justify-start">
-              {blogs.map(blog => (
-                // 
-                <BlogHome key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
-              ))}
+              <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={2} breakpoints={{
+                768: {
+                  slidesPerView: 3
+                }
+              }} freeMode={{ enabled: true, sticky: false }}>
+                {blogs.map(blog => (
+                  <SwiperSlide>
+                    <BlogHome key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </>
