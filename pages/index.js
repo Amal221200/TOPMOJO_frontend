@@ -1,4 +1,4 @@
-import BlogList from '../components/BlogList'
+import BlogHome from '../components/BlogHome'
 
 export default function Home({ blogs, web_desc, message }) {
 
@@ -16,7 +16,7 @@ export default function Home({ blogs, web_desc, message }) {
             <div className="flex flex-wrap justify-center mx-auto lg:justify-start">
               {blogs.map(blog => (
                 // 
-                <BlogList key={blog.id} blog_date={new Date(blog.attributes.updatedAt).toLocaleDateString()} blog_slug={blog.attributes.slug.data.attributes.slug} blog_title={blog.attributes.title} blog_description={blog.attributes.description} />
+                <BlogHome key={blog.id} blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
               ))}
             </div>
           </div>
