@@ -30,9 +30,7 @@ export const getStaticPaths = async () => {
             params: { slug: blog.attributes.slug.data.attributes.slug }
         }
     })
-
-    console.log(paths)
-
+    
     return {
         paths,
         fallback: false
