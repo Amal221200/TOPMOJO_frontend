@@ -26,14 +26,14 @@ export const getStaticPaths = async () => {
             params: { slug: blog.attributes.slug.data.attributes.slug }
         }
     })
-    
+
     return {
         paths,
         fallback: false
     }
 }
 
-export const getStaticProps = async ({params}) => {
+export const getStaticProps = async ({ params }) => {
     const response = await (await fetch(`${process.env.API_URL}/api/posts?populate=*&filters[slug][slug][$eq]=${params.slug}`, {
         headers: {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
