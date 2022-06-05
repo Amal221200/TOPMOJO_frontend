@@ -3,18 +3,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper'
 import { useEffect, useState } from 'react'
 import BlogHome from './BlogHome'
+import { customMethods } from '../customMethods/customMethods'
 
 const CategoryHome = ({ category }) => {
     const [blogs, setBlogs] = useState([])
     const [mounted, setMounted] = useState(false)
 
-    const capitalize = (word)=> {
-        const w = word.toLowerCase()
+    const { capitalize } = customMethods
 
-        return w.charAt(0).toUpperCase() + w.slice(1)
-    }
-
-    useEffect(async () => {
+    const fetchFilteredBlogs = async () => {
         const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
             headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
@@ -23,9 +20,12 @@ const CategoryHome = ({ category }) => {
 
         setBlogs(resp.data)
         setMounted(true)
-    }, [category])
+    }
 
-    if(!mounted) return null
+
+    useEffect(fetchFilteredBlogs, [category])
+
+    if (!mounted) return null
 
     return (
         <>
