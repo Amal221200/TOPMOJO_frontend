@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
     })
     setTheme(localStorage.getItem('theme') !== null && localStorage.getItem('theme'))
     setMounted(true)
-  }, [])
+  }, [router.events, setTheme])
 
   if (!mounted) return null
   return (

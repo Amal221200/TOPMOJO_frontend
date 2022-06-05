@@ -11,19 +11,20 @@ const Category = ({ category }) => {
 
     const { capitalize } = customMethods
 
-    const fetchFilteredBlogs = async () => {
-        const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
-            headers: {
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
-            }
-        })).json()
 
-        setBlogs(resp.data)
-        setMounted(true)
-    }
+    useEffect(() => {
+        const fetchFilteredBlogs = async () => {
+            const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
+                headers: {
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
+                }
+            })).json()
 
-
-    useEffect(fetchFilteredBlogs, [category])
+            setBlogs(resp.data)
+            setMounted(true)
+        }
+        fetchFilteredBlogs()
+    }, [category])
 
     if (!mounted) return null
     return (
