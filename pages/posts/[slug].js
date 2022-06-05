@@ -7,9 +7,9 @@ const Post = ({ post, message }) => {
     });
 
     const htmlContent = md.render(post.attributes.content)
-    // console.log(htmlContent)
+    
     return (
-        <section className='max-w-screen-2xl container min-h-screen px-7 mt-8 mx-auto prose prose-headings:font-semibold prose-h1:text-center sm:prose-img:w-[65rem] lg:prose-img:w-[80%] prose-img:h-auto dark:prose-a:text-[#eb3b3b] dark:prose-headings:text-gray-400 dark:prose-p:text-gray-200 dark:prose-strong:text-white '>
+        <section className='max-w-screen-2xl container min-h-screen px-7 mt-8 mx-auto prose prose-headings:font-semibold prose-h1:text-center prose-img:w-[65rem] lg:prose-img:w-[80%] prose-img:h-auto dark:prose-a:text-[#eb3b3b] dark:prose-headings:text-gray-400 dark:prose-p:text-gray-200 dark:prose-strong:text-white'>
             {!message ?( <div dangerouslySetInnerHTML={{ __html: htmlContent }} className="prose-img:block prose-img:mx-auto"></div> ): (
             <h1>{message}</h1>)}
         </section>
