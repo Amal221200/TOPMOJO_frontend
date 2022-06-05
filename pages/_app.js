@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
     setMounted(true)
   }, [router.events, setTheme])
 
-  if (!mounted) return null
   return (
     <ThemeProvider attribute='class'>
       <React.Fragment>

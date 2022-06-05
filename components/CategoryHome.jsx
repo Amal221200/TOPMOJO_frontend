@@ -1,5 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { TailSpin } from 'react-loader-spinner'
 import { FreeMode } from 'swiper'
 import { useEffect, useState } from 'react'
 import BlogHome from './BlogHome'
@@ -25,7 +26,13 @@ const CategoryHome = ({ category }) => {
         fetchFilteredBlogs()
     }, [category])
 
-    if (!mounted) return null
+    if (mounted) {
+        return (
+            <div className='min-h-[20rem] flex justify-center items-center'>
+                <TailSpin color="#eb3b3b" height={40} width={40} />
+            </div>
+        )
+    }
 
     return (
         <>
