@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 * {
-  transition: color .5s ease-in;
+  transition:  .5s linear;
+  transition-property: color, opacity, width, height, background-color, font-size, z-index;
 }
 
 /* .bg-header {
@@ -38,3 +39,11 @@ html::-webkit-scrollbar-thumb {
 a {
   color: #eb3b3b;
 }
+/* 
+p.description {
+  @apply dark:text-white bg-[#eee] dark:bg-stone-400 md:text-lg text-sm md:p-4 p-2;
+}
+
+p.description.hide {
+  @apply hidden;
+} */
