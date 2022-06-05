@@ -26,7 +26,7 @@ const CategoryHome = ({ category }) => {
         fetchFilteredBlogs()
     }, [category])
 
-    if (mounted) {
+    if (!mounted) {
         return (
             <div className='min-h-[20rem] flex justify-center items-center'>
                 <TailSpin color="#eb3b3b" height={40} width={40} />
