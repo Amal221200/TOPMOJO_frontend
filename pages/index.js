@@ -1,8 +1,6 @@
-import BlogHome from '../components/BlogHome'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper'
+import CategoryHome from '../components/CategoryHome'
 
-export default function Home({ blogs, web_desc, message }) {
+export default function Home({ web_desc, message, categories }) {
 
 
   return (
@@ -14,20 +12,10 @@ export default function Home({ blogs, web_desc, message }) {
             <p className={`leading-7 text-orange-700 dark:text-red-600 text-lg md:text-2xl font-semibold px-5`}>{web_desc.attributes.description}</p>
           </main>
           <div className="container mx-auto px-5 py-24">
-            <h3 className={`text-xl text-black dark:text-white mb-4`}>Some Blogs</h3>
-            <div className="flex flex-wrap justify-center mx-auto lg:justify-start">
-              <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={2} breakpoints={{
-                1024: {
-                  slidesPerView: 3
-                }
-              }} freeMode={{ enabled: true, sticky: false }}>
-                {blogs.map(blog => (
-                  <SwiperSlide key={blog.id} >
-                    <BlogHome blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+
+            {categories.map(category => (
+              <CategoryHome key={category.id} category={category.attributes.category} />
+            ))}
           </div>
         </>
       ) : <h1 className='text-center text-xl mt-4'>message</h1>
@@ -38,24 +26,24 @@ export default function Home({ blogs, web_desc, message }) {
 
 export const getStaticProps = async (context) => {
   try {
-    const response = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=slug&sort=updatedAt:DESC`, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
-      }
-    })).json()
-
     const response2 = await (await fetch(`${process.env.API_URL}/api/website-description`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
       }
     })).json()
 
-    const blogs = response.data
+    const response3 = await (await fetch(`${process.env.API_URL}/api/categories`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
+      }
+    })).json()
+
     const web_desc = response2.data
+    const categories = response3.data
     return {
       props: {
-        blogs,
-        web_desc
+        web_desc,
+        categories
       }
     }
   } catch (err) {

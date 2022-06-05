@@ -1,31 +1,13 @@
 import React from 'react'
-import Blog from '../../components/Blog'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper'
+import Category from '../../components/Category'
 
-const Blogs = ({ blogs, message }) => {
+const Blogs = ({ categories }) => {
     return (
         <section className='min-h-screen'>
             <div className='container py-4 px-2 mx-auto text-black dark:text-white md'>
-                <div className='flex flex-wrap'>
-                    <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={2} breakpoints={{
-                        768: {
-                            slidesPerView: 3
-                        }
-                    }} freeMode={{enabled: true, sticky: false}}>
-                        {!message ? (
-                            blogs.map(blog => {
-                                return (
-                                    <SwiperSlide key={blog.id} >
-                                        <Blog blogDate={new Date(blog.attributes.updatedAt).toLocaleDateString()} blogSlug={blog.attributes.slug.data.attributes.slug} blogTitle={blog.attributes.title} blogDescription={blog.attributes.description} />
-                                    </SwiperSlide>
-                                )
-                            })
-                        ) : (
-                            <h1>{message}</h1>
-                        )}
-                    </Swiper>
-                </div>
+                {categories.map(category => (
+                    <Category category={category.attributes.category} key={category.id} />
+                ))}
             </div>
         </section>
     )
@@ -42,11 +24,19 @@ export const getStaticProps = async (context) => {
             }
         })).json()
 
+        const response2 = await (await fetch(`${process.env.API_URL}/api/categories`, {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
+            }
+          })).json()
+
         const blogs = response.data
+        const categories = response2.data
 
         return {
             props: {
-                blogs
+                blogs,
+                categories
             }
         }
     } catch (err) {
