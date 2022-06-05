@@ -7,6 +7,12 @@ const Category = ({ category }) => {
     const [blogs, setBlogs] = useState([])
     const [mounted, setMounted] = useState(false)
 
+    const capitalize = (word)=> {
+        const w = word.toLowerCase()
+
+        return w.charAt(0).toUpperCase() + w.slice(1)
+    }
+
     useEffect(async () => {
         const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
             headers: {
@@ -21,7 +27,7 @@ const Category = ({ category }) => {
     if (!mounted) return null
     return (
         <div className='mb-6'>
-            <h3 className={`text-xl text-black dark:text-white mb-4`}>{category}</h3>
+            <h3 className={`text-xl text-black dark:text-white mb-4`}>{capitalize(category)}</h3>
             <div className='flex flex-wrap'>
                 <Swiper modules={[FreeMode]} grabCursor={true} slidesPerView={blogs.length <= 2 ? blogs.length : 2} breakpoints={{
                     768: {
