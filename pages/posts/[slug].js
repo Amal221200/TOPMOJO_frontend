@@ -9,7 +9,7 @@ const Post = ({ post, message }) => {
 
 
     return (
-        <section className='max-w-screen-2xl container min-h-screen px-7 mt-8 mx-auto prose prose-headings:font-semibold prose-h1:text-center prose-img:w-[65rem] lg:prose-img:w-[70%] prose-img:h-auto dark:prose-a:text-[#eb3b3b] prose-p:p-3 prose-p:bg-[#eee] prose-p:dark:bg-[#1e1d1d] dark:prose-headings:text-gray-400 dark:prose-p:text-gray-200 dark:prose-strong:text-white'>
+        <section className='max-w-screen-2xl container min-h-screen px-7 mt-8 mx-auto prose prose-headings:font-semibold prose-h1:text-center prose-img:w-[65rem] lg:prose-img:w-[70%] prose-p:text-xs sm:prose-p:text-sm md:text-base prose-img:h-auto dark:prose-a:text-[#eb3b3b] prose-p:p-3 prose-p:bg-[#eee] prose-p:dark:bg-[#1e1d1d] dark:prose-headings:text-gray-400 dark:prose-p:text-gray-200 dark:prose-strong:text-white'>
             {!message ? (<div dangerouslySetInnerHTML={{ __html: htmlContent }} className="prose-img:block prose-img:mx-auto"></div>) : (
                 <h1>{message}</h1>)}
         </section>
