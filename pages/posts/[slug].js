@@ -2,7 +2,7 @@ import React from 'react'
 import MarkdownIt from 'markdown-it'
 
 const Post = ({ post, message }) => {
-    const md = new MarkdownIt();
+    const md = new MarkdownIt({});
 
     const htmlContent = md.render(post.attributes.content)
 
