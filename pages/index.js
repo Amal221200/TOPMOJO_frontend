@@ -1,7 +1,6 @@
 import CategoryHome from '../components/CategoryHome'
 
-export default function Home({ web_desc, message, categories }) {
-
+export default function Home({ web_desc, message, categories, filteredBlog }) {
 
   return (
     <section className="text-gray-600 body-font min-h-screen">
@@ -14,11 +13,11 @@ export default function Home({ web_desc, message, categories }) {
           <div className="container mx-auto px-5 py-24">
 
             {categories.map(category => (
-              <CategoryHome key={category.id} category={category.attributes.category} />
+              <CategoryHome key={category.id} category={category.attributes.category} filteredBlog={filteredBlog} />
             ))}
           </div>
         </>
-      ) : <h1 className='text-center text-xl mt-4'>message</h1>
+      ) : <h1 className='text-center text-xl mt-4'>{message}</h1>
       }
     </section>
   )
@@ -40,10 +39,29 @@ export const getStaticProps = async (context) => {
 
     const web_desc = response2.data
     const categories = response3.data
+
+
+    const response = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=categories&populate=slug`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
+      }
+    })).json()
+
+    const blogs = response.data
+    let filteredBlog = {}
+
+    blogs.forEach(blog => {
+
+      blog.attributes.categories.data.forEach((category, categoryIndex) => {
+        filteredBlog = { ...filteredBlog, [category.attributes.category]: blogs.filter(blog => blog.attributes.categories.data[categoryIndex].attributes.category === category.attributes.category) }
+      })
+    })
+
     return {
       props: {
         web_desc,
-        categories
+        categories,
+        filteredBlog
       }
     }
   } catch (err) {

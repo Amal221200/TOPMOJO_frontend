@@ -3,30 +3,29 @@ import Blog from './Blog'
 import { TailSpin } from 'react-loader-spinner'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper'
-import { customMethods } from '../customMethods/customMethods'
+import { capitalize } from '../customMethods/customMethods'
 
 
-const Category = ({ category }) => {
+const Category = ({ category, filteredBlog }) => {
     const [blogs, setBlogs] = useState([])
     const [mounted, setMounted] = useState(false)
 
-    const { capitalize } = customMethods
-
-
     useEffect(() => {
-        const fetchFilteredBlogs = async () => {
-            setMounted(false)
-            const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
-                headers: {
-                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
-                }
-            })).json()
+        // const fetchFilteredBlogs = async () => {
+        //     const resp = await (await fetch(`${process.env.API_URL}/api/blog-descriptions?populate=*&sort=updatedAt:DESC&filters[categories][category][$eq]=${category}`, {
+        //         headers: {
+        //             Authorization: `Bearer ${process.env.NEXT_PUBLIC_API}`
+        //         }
+        //     })).json()
 
-            setBlogs(resp.data)
-            setMounted(true)
-        }
-        fetchFilteredBlogs()
+        //     setBlogs(resp.data)
+        //     setMounted(true)
+        // }
+        // fetchFilteredBlogs()
+        setBlogs(filteredBlog[category])
+        setMounted(true)
     }, [category])
+
 
     if (!mounted) {
         return (
